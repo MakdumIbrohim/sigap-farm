@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-@config {
-  darkMode: class;
-}
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
