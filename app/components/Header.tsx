@@ -1,9 +1,9 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { Sun, Moon, User } from 'lucide-react';
+import { Sun, Moon, User, Menu } from 'lucide-react';
 
-const Header = () => {
+const Header = ({ onMenuClick }: { onMenuClick: () => void }) => {
   const { resolvedTheme, setTheme } = useTheme();
 
   const toggleTheme = () => {
@@ -14,6 +14,14 @@ const Header = () => {
     <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
       <div className="flex items-center justify-between px-4 py-3">
         <div className="flex items-center space-x-4">
+          <button
+            onClick={onMenuClick}
+            className="p-2 md:hidden rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            aria-label="Open menu"
+          >
+            <Menu className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+          </button>
+
           <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
             SIGAP FARM
           </h1>
