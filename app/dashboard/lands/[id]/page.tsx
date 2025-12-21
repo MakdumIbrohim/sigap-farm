@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useParams } from 'next/navigation';
-import { LandParcel, Disaster } from '../types/disaster';
+import { LandParcel, Disaster } from '../../../types/disaster';
 
 // Mock data for demonstration
 const mockLandParcel: LandParcel = {
@@ -54,7 +53,7 @@ const mockDisasters: Disaster[] = [
 ];
 
 export default function LandDetailPage() {
-  const { id } = useParams<{ id: string }>();
+  // const { id } = useParams<{ id: string }>();
   const [landParcel] = useState<LandParcel>(mockLandParcel);
   const [disasters] = useState<Disaster[]>(mockDisasters);
 

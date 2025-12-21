@@ -10,7 +10,7 @@ const MapView = dynamic(() => import('../../components/MapView'), {
 });
 
 export default function MapPage() {
-  const { layers, toggleLayer, disasterType, setDisasterType } = useMapStore();
+  const { layers, toggleLayer, setDisasterType } = useMapStore();
 
   return (
     <div className="flex flex-col h-full">
@@ -19,9 +19,9 @@ export default function MapPage() {
         <p className="text-gray-600">View disaster-affected agricultural areas</p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-4 flex-grow">
+      <div className="flex flex-col lg:flex-row gap-4 grow">
         {/* Left sidebar with filters */}
-        <div className="lg:w-80 flex-shrink-0 space-y-4">
+        <div className="lg:w-80 shrink-0 space-y-4">
           <FilterPanel />
           
           {/* Legend */}
@@ -68,7 +68,7 @@ export default function MapPage() {
                     onChange={() => toggleLayer('disasterZones')}
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
                 </label>
               </div>
               
@@ -81,7 +81,7 @@ export default function MapPage() {
                     onChange={() => toggleLayer('landParcels')}
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
                 </label>
               </div>
               
@@ -94,7 +94,7 @@ export default function MapPage() {
                     onChange={() => toggleLayer('satellite')}
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
                 </label>
               </div>
             </div>
@@ -102,7 +102,7 @@ export default function MapPage() {
         </div>
 
         {/* Map container */}
-        <div className="flex-grow h-[600px] lg:h-auto rounded-lg overflow-hidden shadow-md relative">
+        <div className="grow h-150 lg:h-auto rounded-lg overflow-hidden shadow-md relative">
           <MapView />
           
           {/* Map Controls */}
