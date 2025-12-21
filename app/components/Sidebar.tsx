@@ -51,8 +51,8 @@ const Sidebar = () => {
                   <Link
                     href={item.href}
                     className={`flex items-center px-4 py-3 rounded-lg transition-colors ${pathname === item.href
-                        ? 'bg-blue-800 text-white font-medium'
-                        : 'text-blue-100 hover:bg-blue-800 hover:text-white'
+                      ? 'bg-blue-800 text-white font-medium'
+                      : 'text-blue-100 hover:bg-blue-800 hover:text-white'
                       }`}
                   >
                     <span>{item.name}</span>
@@ -80,7 +80,7 @@ const Sidebar = () => {
       {/* Overlay for mobile */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+          className="fixed inset-0 bg-black/50 z-30 md:hidden"
           onClick={() => setIsOpen(false)}
         ></div>
       )}
