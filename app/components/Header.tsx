@@ -2,9 +2,15 @@
 
 import { useTheme } from 'next-themes';
 import { Sun, Moon, User, Menu } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 const Header = ({ onMenuClick }: { onMenuClick: () => void }) => {
   const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
@@ -35,7 +41,9 @@ const Header = ({ onMenuClick }: { onMenuClick: () => void }) => {
             aria-label="Toggle theme"
             suppressHydrationWarning={true}
           >
-            {resolvedTheme === 'dark' ? (
+            {!mounted ? (
+              <div className="w-5 h-5" />
+            ) : resolvedTheme === 'dark' ? (
               <Sun className="w-5 h-5 text-yellow-500" />
             ) : (
               <Moon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
