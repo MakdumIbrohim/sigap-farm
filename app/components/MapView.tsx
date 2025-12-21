@@ -1,12 +1,12 @@
 'use client';
 
-import { MapContainer, TileLayer, ZoomControl, LayersControl, Polygon, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, ZoomControl, LayersControl, Polygon, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useMapStore } from '../store/useMapStore';
 import L from 'leaflet';
-import { useEffect, useState } from 'react';
 
 // Fix for default marker icons in Leaflet
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -72,8 +72,7 @@ const mockLandParcels = [
 ];
 
 const MapView = () => {
-  const { center, zoom, layers, disasterType, selectedLandId } = useMapStore();
-  const [map, setMap] = useState<L.Map | null>(null);
+  const { center, zoom, layers } = useMapStore();
 
   // Base layers
   const baseLayers = [
@@ -91,17 +90,6 @@ const MapView = () => {
     },
   ];
 
-  // Get color based on disaster type
-  const getColorByType = (type: string) => {
-    switch (type) {
-      case 'flood': return '#3b82f6'; // blue
-      case 'drought': return '#f59e0b'; // amber
-      case 'volcanic_eruption': return '#ef4444'; // red
-      case 'earthquake': return '#8b5cf6'; // violet
-      case 'landslide': return '#10b981'; // emerald
-      default: return '#6b7280'; // gray
-    }
-  };
 
   // Get color based on severity
   const getColorBySeverity = (severity: string) => {
@@ -121,7 +109,6 @@ const MapView = () => {
         zoom={zoom}
         zoomControl={false}
         className="w-full h-full"
-        ref={setMap}
       >
         <ZoomControl position="bottomright" />
         <LayersControl position="topright">
